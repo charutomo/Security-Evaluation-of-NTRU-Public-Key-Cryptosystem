@@ -28,8 +28,8 @@ Listed below are the current main features of `Security-Evaluation-of-NTRU-Publi
 
 * [.gitignore](https://github.com/charutomo/Security-Evaluation-of-NTRU-Public-Key-Cryptosystem/blob/main/.gitignore)
 
-* [New Proposed Attack](https://github.com/charutomo/Security-Evaluation-of-NTRU-Public-Key-Cryptosystem/blob/main/New_Proposed_Attack)
-
+* [New Proposed Attack](https://github.com/charutomo/Security-Evaluation-of-NTRU-Public-Key-Cryptosystem/tree/main/New%20Proposed%20Attack)
+  *[LLL python implementation.py](https://github.com/charutomo/Security-Evaluation-of-NTRU-Public-Key-Cryptosystem/blob/main/New%20Proposed%20Attack/LLL%20python%20implementation.py)
   
 </details>
 <br/>
