@@ -8,20 +8,19 @@ Created on Wed Mar  9 13:48:42 2022
 import numpy as np
 from numpy.linalg import norm 
 import math
-from conversiontxtfile import convert 
+from conversiontxtfile import converttolist
+from checkdata import SVFinder
 from checkdata import SV
 
-latticelist = convert("testdata.txt")
+latticelist = converttolist("testdata.txt")
 
 
-#finding norm
-# use norm(vector,2) for norm instead from numpy.linalg
-
+#finding norm : use norm(vector,2) for norm
 
 
 def gramschmidts(latticelist):
     '''
-    
+    gram schimdts orthogonalisation
 
     Parameters
     ----------
@@ -46,6 +45,20 @@ def gramschmidts(latticelist):
 
 
 def lllalgo(l):
+    '''
+    Lenstra-Lenstra-Lovasz algorithm
+    
+    Parameters
+    ----------
+    l : basis of vectors of NTRU to be reduced
+        DESCRIPTION.
+
+    Returns
+    -------
+    l : LLL reduced basis
+        DESCRIPTION.
+
+    '''
     basis = gramschmidts(l)
     k = 1
     while k<= len(l)-1:
@@ -61,17 +74,22 @@ def lllalgo(l):
             l[k]= l[k-1]
             l[k-1]= temp
             k = max(k-1,1)
+            basis = gramschmidts(l)
     return l
 
 
 print(lllalgo(latticelist))
 
-
 print()
+print(SV(lllalgo(latticelist)))
+print()
+print(SVFinder(lllalgo(latticelist))) #check for largest norm which determines the SVP
 
-#check for largest norm which determines the SVP
+'''
 largestnorm =[]
 for i in range(len(lllalgo(latticelist))):
     largestnorm.append(norm((lllalgo(latticelist))[i],2))
-print(max(largestnorm))
+print(min(largestnorm))
 print(largestnorm)
+
+'''
